@@ -29,11 +29,11 @@ const App = () => {
   const voteForQuote = () => {
     const copy = {...votes};
     copy[selected] += 1;
-    setVotes(copy);
-    if(votes[selected] > votes[mostVoted])
+    if(copy[selected] > votes[mostVoted])
     {
       setMostVoted(selected);
     }
+    setVotes(copy);
   };
   
 
@@ -41,11 +41,12 @@ const App = () => {
     <div>
       <h1>Anecdotes</h1>
       <p>{anecdotes[selected]}</p>
-      <p>{votes[selected]}</p>
+      <p>has {votes[selected]} votes</p>
       <Button handleClick={randomQuote} text="New Quote" />
       <Button handleClick={voteForQuote} text="Vote for Quote" />
       <h1>Anecdotes with the Most Votes</h1>
       <p>{anecdotes[mostVoted]}</p>
+      <p> has {votes[mostVoted]} votes</p>
     </div>
   );
 };
